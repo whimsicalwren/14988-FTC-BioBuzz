@@ -1,6 +1,9 @@
 repositories {
     mavenCentral()
     google() // Needed for androidx
+    maven { url = "https://maven.rowanmcalpin.com/" }
+    maven { url = "https://maven.pedropathing.com/" } // Remove if you don't intend to use PedroPathing
+    maven { url = "https://mymaven.bylazar.com/releases" }
 }
 
 dependencies {
@@ -13,5 +16,18 @@ dependencies {
     implementation 'org.firstinspires.ftc:FtcCommon:11.2.0'
     implementation 'org.firstinspires.ftc:Vision:11.2.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    implementation "com.pedropathing:ftc:${pedropathing_version}"
+    implementation "com.pedropathing:telemetry:${pedropathing_tele_version}"
+    implementation "com.pedropathing:ivy:${ivy_version}"
+
+    implementation "com.bylazar:fullpanels:${panels_version}"
+
+    // although we don't used nextftc, their bindings stuff is quite useful by itself
+    implementation "dev.nextftc:bindings:${bindings_version}"
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.2'
 }
 
