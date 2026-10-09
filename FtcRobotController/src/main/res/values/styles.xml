@@ -20,4 +20,50 @@
     <style name="AppThemeTealRC" parent="AppTheme.Teal">
     </style>
 
+    <style name="whimsyApp" parent="AppBaseTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textViewStyle">@style/whimsyText</item>
+        <item name="android:buttonStyle">@style/whimsyButton</item>
+        <item name="textWhite">#C0C0C0</item>
+        <item name="colorReady">@color/light_teal</item>
+        <item name="colorInitReady">@color/dark_purple</item>
+
+        <item name="textBright">@color/bright_blue</item>
+        <item name="textLight">@color/light_teal</item>
+        <item name="textMedium">@color/medium_green</item>
+        <item name="textMediumDark">@color/medium_dark_red</item>
+        <item name="textVeryDark">@color/very_dark_orange</item>
+        <item name="textVeryVeryDark">@color/very_very_dark_purple</item>
+
+        <item name="colorMedium">@color/medium_purple</item>
+        <item name="colorMediumMedium">@color/medium_medium_blue</item>
+        <item name="colorMediumLight">@color/medium_light_orange</item>
+        <item name="colorAlmostDark">@color/almost_dark_green</item>
+        <item name="colorVeryVeryDark">@color/very_very_dark_teal</item>
+
+        <item name="backgroundLight">@color/light_green</item>
+        <item name="backgroundMediumLight">@color/medium_light_green</item>
+        <item name="backgroundMedium">@color/medium_purple</item>
+        <item name="backgroundMediumMedium">@color/medium_medium_orange</item>
+        <item name="backgroundMediumDark">@color/medium_dark_teal</item>
+        <item name="backgroundAlmostDark">@color/almost_dark_red</item>
+        <item name="backgroundDark">@color/dark_green</item>
+        <item name="backgroundVeryDark">@color/very_dark_teal</item>
+        <item name="backgroundVeryVeryDark">@color/very_very_dark_blue</item>
+        <item name="lineBright">@color/bright_blue</item>
+        <item name="lineLight">@color/light_red</item>
+        <item name="feedbackBackground">@color/background_black</item>
+        <item name="feedbackBorder">#0008FF</item>
+        <item name="feedbackShape">@drawable/pink</item>
+    </style>
+
+    <style name="whimsyText" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
+
+    <style name="whimsyButton" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
+
 </resources>
