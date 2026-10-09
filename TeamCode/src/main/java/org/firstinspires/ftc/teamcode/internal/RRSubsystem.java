@@ -4,6 +4,9 @@ import com.pedropathing.ivy.Scheduler;
 
 import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
 
+import dev.nextftc.hardware.RobotController;
+import dev.nextftc.units.measuretypes.Voltage;
+
 /**
  * take a wild fucking guess. that's right. it's a subsystem. good job you get a gold star
  */
@@ -100,4 +103,8 @@ public interface RRSubsystem {
      * This method is called after all three update methods, to preserve deltatime accuracy
      */
     default void addTelemetry(TelemetryHelper telemetry) {}
+
+    default Voltage voltage() {
+        return RobotController.getInputVoltage();
+    }
 }

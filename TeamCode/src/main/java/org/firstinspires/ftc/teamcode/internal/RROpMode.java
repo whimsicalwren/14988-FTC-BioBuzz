@@ -5,7 +5,10 @@ import com.bylazar.telemetry.TelemetryManager;
 import com.pedropathing.ivy.Scheduler;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.internal.subsystems.RobotConfig;
+import org.firstinspires.ftc.teamcode.internal.subsystems.Sensitivities;
 import org.firstinspires.ftc.teamcode.internal.util.DeltaTimer;
+import org.firstinspires.ftc.teamcode.internal.util.Phase;
 import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
 
 import java.util.Arrays;
@@ -26,15 +29,17 @@ public abstract class RROpMode extends LinearOpMode {
         this.subsystems.addAll(Arrays.asList(subsystems));
     }
 
-    RobotConfig config;
     final TelemetryManager telemetryManager = PanelsTelemetry.INSTANCE.getTelemetry();
     final RRGamepad p1 = new RRGamepad(() -> gamepad1);
     final RRGamepad p2 = new RRGamepad(() -> gamepad2);
     final DeltaTimer deltaTimer = new DeltaTimer();
     final TelemetryHelper helper = new TelemetryHelper();
+    Phase phase = Phase.NONE;
 
     @Override
     public final void runOpMode() {
+        addSubsystems(RobotConfig.getOrNew(), new Sensitivities());
+
         try {
             subsystems.forEach(RRSubsystem::preInit);
             _init();
@@ -68,15 +73,14 @@ public abstract class RROpMode extends LinearOpMode {
             _stop();
             subsystems.forEach(RRSubsystem::postStop);
         } catch (Exception e) {
-            RuntimeException re = new RuntimeException(e.getMessage());
-            re.setStackTrace(e.getStackTrace());
-            throw re;
+            RuntimeException iDontLikeYou = new RuntimeException(e.getMessage());
+            iDontLikeYou.setStackTrace(e.getStackTrace());
+            throw iDontLikeYou;
         }
     }
 
     // region internal methods
     private void _init() {
-        config = new RobotConfig(hardwareMap);
         subsystems.forEach(RRSubsystem::onInit);
         onInit();
     }
@@ -93,6 +97,7 @@ public abstract class RROpMode extends LinearOpMode {
 
     private void _update() {
         BindingManager.update();
+        Scheduler.execute();
         subsystems.forEach(RRSubsystem::onUpdate);
         onUpdate();
     }
