@@ -107,4 +107,12 @@ public interface RRSubsystem {
     default Voltage voltage() {
         return RobotController.getInputVoltage();
     }
+
+    default RRGamepad gamepad1() {
+        return Manager.p1;
+    }
+
+    default RRGamepad gamepad2() {
+        return Manager.p2;
+    }
 }

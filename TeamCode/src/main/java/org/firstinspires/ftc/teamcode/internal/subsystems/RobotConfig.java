@@ -8,6 +8,8 @@ import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
 /**
  * the one the only robot config.
  * goddamn this file changes every year
+ *
+ * that's right. it's a subsystem now.
  */
 public class RobotConfig implements RRSubsystem { // yes very subsystem
 

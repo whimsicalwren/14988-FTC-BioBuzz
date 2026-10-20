@@ -5,6 +5,9 @@ import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
 import static dev.nextftc.hardware.actuators.NextMotor.Direction;
 import static org.firstinspires.ftc.teamcode.internal.subsystems.RobotConfig.INSTANCE;
 
+/**
+ * i guess we doin subsystems now
+ */
 public class Sensitivities implements RRSubsystem {
 
     public static Direction
@@ -15,7 +18,7 @@ public class Sensitivities implements RRSubsystem {
 
     public static double
         driveY = 1,
-        driveX = 1,
+        driveX = 1.1,
         driveYaw = 1,
         slowmode = 0.4;
 
