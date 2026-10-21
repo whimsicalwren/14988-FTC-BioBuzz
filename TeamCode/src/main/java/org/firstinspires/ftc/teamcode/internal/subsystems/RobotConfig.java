@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.internal.subsystems;
 
+import com.bylazar.configurables.annotations.Configurable;
+
 import dev.nextftc.hardware.RobotController;
 import dev.nextftc.hardware.actuators.NextMotor;
 
@@ -11,6 +13,7 @@ import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
  *
  * that's right. it's a subsystem now.
  */
+@Configurable
 public class RobotConfig implements RRSubsystem { // yes very subsystem
 
     public static RobotConfig INSTANCE;
@@ -20,14 +23,20 @@ public class RobotConfig implements RRSubsystem { // yes very subsystem
         return INSTANCE;
     }
 
+    public static int
+            flPort = 0,
+            frPort = 0,
+            blPort = 2,
+            brPort = 2;
+
     public NextMotor flDrive, frDrive, blDrive, brDrive;
 
     @Override
     public void preInit() {
-        flDrive = new NextMotor(RobotController.controlHub(), 0);
-        frDrive = new NextMotor(RobotController.expansionHub(), 0);
-        blDrive = new NextMotor(RobotController.controlHub(), 2);
-        brDrive = new NextMotor(RobotController.expansionHub(), 2);
+        flDrive = new NextMotor(RobotController.controlHub(), flPort);
+        frDrive = new NextMotor(RobotController.expansionHub(), frPort);
+        blDrive = new NextMotor(RobotController.controlHub(), blPort);
+        brDrive = new NextMotor(RobotController.expansionHub(), brPort);
     }
 
     @Override
