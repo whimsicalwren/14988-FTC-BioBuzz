@@ -5,8 +5,6 @@ import com.bylazar.telemetry.TelemetryManager;
 import com.pedropathing.ivy.Scheduler;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.internal.subsystems.RobotConfig;
-import org.firstinspires.ftc.teamcode.internal.subsystems.Sensitivities;
 import org.firstinspires.ftc.teamcode.internal.util.DeltaTimer;
 import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
 
@@ -36,7 +34,7 @@ public abstract class RROpMode extends LinearOpMode {
 
     @Override
     public final void runOpMode() {
-        addSubsystems(new RobotConfig(), new Sensitivities());
+        addSubsystems(new RRobot());
 
         try {
             subsystems.forEach(RRSubsystem::preInit);

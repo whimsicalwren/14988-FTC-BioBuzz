@@ -2,36 +2,31 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.pedropathing.ivy.Command;
 
-import org.firstinspires.ftc.teamcode.internal.Manager;
-import org.firstinspires.ftc.teamcode.internal.subsystems.RobotConfig;
-import org.firstinspires.ftc.teamcode.internal.subsystems.Sensitivities;
+import org.firstinspires.ftc.teamcode.internal.RRobot;
+import org.firstinspires.ftc.teamcode.internal.util.Config;
 
 public enum Commands implements Runnable {
-    SLOWMODE_ON(Command.build().setExecute(() -> Sensitivities.slowmodeValue = RobotConfig.slowmode)),
-    SLOWMODE_OFF(Command.build().setExecute(() -> Sensitivities.slowmodeValue = 1.0)),
+    SLOWMODE_ON(Command.build().setExecute(() -> Config.setSlowmodeModifier(Config.slowmode))),
+    SLOWMODE_OFF(Command.build().setExecute(() -> Config.setSlowmodeModifier(1.0))),
     DRIVE(Command.build()
             .setExecute(() -> {
-                double x = Manager.p1.leftStickX.get() * Sensitivities.driveX * Sensitivities.slowmodeValue;
-                double y = Manager.p1.leftStickY.get() * Sensitivities.driveY * Sensitivities.slowmodeValue;
-                double r = Manager.p1.rightStickX.get() * Sensitivities.driveYaw * Sensitivities.slowmodeValue;
+                double y = RRobot.gamepad1.leftStickY.get() * Config.driveYModifier.get();
+                double x = RRobot.gamepad1.leftStickX.get() * Config.driveXModifier.get();
+                double r = RRobot.gamepad1.rightStickX.get() * Config.driveRModifier.get();
 
                 double denominator = Math.max(Math.abs(x) + Math.abs(y) + Math.abs(r), 1.0);
 
-                RobotConfig.INSTANCE.flDrive.setThrottle((y + x + r) / denominator);
-                RobotConfig.INSTANCE.frDrive.setThrottle((y - x - r) / denominator);
-                RobotConfig.INSTANCE.blDrive.setThrottle((y - x + r) / denominator);
-                RobotConfig.INSTANCE.brDrive.setThrottle((y + x - r) / denominator);
+                RRobot.INSTANCE.flDrive.setThrottle((y + x + r) / denominator);
+                RRobot.INSTANCE.frDrive.setThrottle((y - x - r) / denominator);
+                RRobot.INSTANCE.blDrive.setThrottle((y - x + r) / denominator);
+                RRobot.INSTANCE.brDrive.setThrottle((y + x - r) / denominator);
             }))
     ;
 
     private final Command command;
 
-    Commands(Command command) {
-        this.command = command;
-    }
+    Commands(Command command) { this.command = command; }
 
     @Override
-    public void run() {
-        command.schedule();
-    }
+    public void run() { command.schedule(); }
 }

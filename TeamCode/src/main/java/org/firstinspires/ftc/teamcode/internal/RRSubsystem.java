@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.internal;
 
 import com.pedropathing.ivy.Scheduler;
 
+import org.firstinspires.ftc.teamcode.internal.util.DeltaTimer;
 import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
 
 import dev.nextftc.hardware.RobotController;
@@ -20,7 +21,7 @@ public interface RRSubsystem {
     default void preInit() {}
 
     /**
-     * Normal initialization method called by {@link RROpMode#_init()} When this is run, it should be safe to grab values from {@link Manager}
+     * Normal initialization method called by {@link RROpMode#_init()} When this is run, it should be safe to grab values from {@link RRobot}
      */
     default void onInit() {}
 
@@ -104,10 +105,22 @@ public interface RRSubsystem {
     }
 
     default RRGamepad gamepad1() {
-        return Manager.p1;
+        return RRobot.gamepad1;
     }
 
     default RRGamepad gamepad2() {
-        return Manager.p2;
+        return RRobot.gamepad2;
+    }
+
+    default TelemetryHelper telemetry() {
+        return RRobot.telemetry;
+    }
+
+    default DeltaTimer deltaTimer() {
+        return RRobot.deltaTimer;
+    }
+
+    default Long getDelta() {
+        return RRobot.deltaTimer.get();
     }
 }

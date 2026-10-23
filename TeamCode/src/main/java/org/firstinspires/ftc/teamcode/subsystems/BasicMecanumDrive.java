@@ -5,10 +5,7 @@ import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
 public class BasicMecanumDrive implements RRSubsystem {
 
     public static BasicMecanumDrive INSTANCE;
-
-    public BasicMecanumDrive() {
-        INSTANCE = this;
-    }
+    public BasicMecanumDrive() { INSTANCE = this; }
 
     @Override
     public void onInit() {
