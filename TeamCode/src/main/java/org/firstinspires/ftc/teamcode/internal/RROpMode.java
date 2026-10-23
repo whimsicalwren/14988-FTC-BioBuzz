@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.internal.subsystems.RobotConfig;
 import org.firstinspires.ftc.teamcode.internal.subsystems.Sensitivities;
 import org.firstinspires.ftc.teamcode.internal.util.DeltaTimer;
-import org.firstinspires.ftc.teamcode.internal.util.Phase;
 import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
 
 import java.util.Arrays;
@@ -34,11 +33,10 @@ public abstract class RROpMode extends LinearOpMode {
     final RRGamepad p2 = new RRGamepad(() -> gamepad2);
     final DeltaTimer deltaTimer = new DeltaTimer();
     final TelemetryHelper helper = new TelemetryHelper();
-    Phase phase = Phase.NONE;
 
     @Override
     public final void runOpMode() {
-        addSubsystems(RobotConfig.getOrNew(), new Sensitivities());
+        addSubsystems(new RobotConfig(), new Sensitivities());
 
         try {
             subsystems.forEach(RRSubsystem::preInit);
@@ -60,12 +58,10 @@ public abstract class RROpMode extends LinearOpMode {
                     deltaTimer.reset();
 
                     subsystems.forEach(RRSubsystem::preUpdate);
-                    _update();
-                    subsystems.forEach(RRSubsystem::postUpdate);
-
                     helper.formattedLine("delta: %s ms", TimeUnit.MILLISECONDS.convert(deltaTimer.get(), TimeUnit.NANOSECONDS));
-                    subsystems.forEach(ss -> ss.addTelemetry(helper));
+                    _update();
                     helper.output(telemetryManager, telemetry);
+                    subsystems.forEach(RRSubsystem::postUpdate);
                 }
             }
 

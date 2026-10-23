@@ -12,8 +12,8 @@ public class BasicMecanumDrive implements RRSubsystem {
 
     @Override
     public void onInit() {
-        Commands.SLOWMODE_ON.bind(gamepad1().leftTrigger.greaterThan(0.3));
-        Commands.SLOWMODE_OFF.bind(gamepad1().leftTrigger.lessThan(0.3));
+        gamepad1().leftTrigger.greaterThan(0.3).whenBecomesTrue(Commands.SLOWMODE_ON);
+        gamepad1().leftTrigger.greaterThan(0.3).whenBecomesFalse(Commands.SLOWMODE_OFF);
     }
 
     @Override

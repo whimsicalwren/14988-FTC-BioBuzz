@@ -14,17 +14,15 @@ import com.bylazar.configurables.annotations.IgnoreConfigurable;
 @Configurable
 public class Sensitivities implements RRSubsystem {
 
-    public static Direction
-        flDirection = Direction.FORWARD,
-        frDirection = Direction.REVERSE,
-        blDirection = Direction.FORWARD,
-        brDirection = Direction.REVERSE;
+    public static Direction flDirection = Direction.FORWARD;
+    public static Direction frDirection = Direction.REVERSE;
+    public static Direction blDirection = Direction.FORWARD;
+    public static Direction brDirection = Direction.REVERSE;
 
-    public static double
-        driveY = 1,
-        driveX = 1,
-        driveYaw = 1,
-        slowmode = 0.4;
+    public static double driveY = 1;
+    public static double driveX = 1;
+    public static double driveYaw = 1;
+    public static double slowmode = 0.4;
 
     @IgnoreConfigurable
     public static double slowmodeValue = 1;

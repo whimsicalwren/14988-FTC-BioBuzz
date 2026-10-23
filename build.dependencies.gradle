@@ -1,36 +1,44 @@
 repositories {
     mavenCentral()
-    google() // Needed for androidx
-    maven { url = "https://maven.rowanmcalpin.com/" }
-    maven { url = "https://maven.pedropathing.com/" } // Remove if you don't intend to use PedroPathing
-    maven { url = "https://mymaven.bylazar.com/releases" }
+    google()
+    maven {
+        url = "https://mymaven.bylazar.com/releases"
+    }
+    maven {
+        url = "https://repo.dairy.foundation/releases"
+    }
 }
 
-dependencies {
-    implementation 'org.firstinspires.ftc:Inspection:12.0.0'
-    implementation 'org.firstinspires.ftc:Blocks:12.0.0'
-    implementation 'org.firstinspires.ftc:RobotCore:12.0.0'
-    implementation 'org.firstinspires.ftc:RobotServer:12.0.0'
-    implementation 'org.firstinspires.ftc:OnBotJava:12.0.0'
-    implementation 'org.firstinspires.ftc:Hardware:12.0.0'
-    implementation 'org.firstinspires.ftc:FtcCommon:12.0.0'
-    implementation 'org.firstinspires.ftc:Vision:12.0.0'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
 
-    implementation "com.pedropathing:ftc:${pedropathing_version}"
-    implementation "com.pedropathing:telemetry:${pedropathing_tele_version}"
-    implementation "com.pedropathing:ivy:${ivy_version}"
+dependencies {
+    implementation "org.firstinspires.ftc:Inspection:${ftc_version}"
+    implementation "org.firstinspires.ftc:Blocks:${ftc_version}"
+    //noinspection Aligned16KB
+    implementation "org.firstinspires.ftc:RobotCore:${ftc_version}"
+    implementation "org.firstinspires.ftc:RobotServer:${ftc_version}"
+    implementation "org.firstinspires.ftc:OnBotJava:${ftc_version}"
+    implementation "org.firstinspires.ftc:Hardware:${ftc_version}"
+    implementation "org.firstinspires.ftc:FtcCommon:${ftc_version}"
+    implementation "org.firstinspires.ftc:Vision:${ftc_version}"
+    //noinspection GradleDependency
+    implementation "androidx.appcompat:appcompat:1.2.0"
+
+    implementation "com.pedropathing:revhub:${revhub_version}"
+    implementation "com.pedropathing:tuning:${tuning_version}"
+    implementation "com.pedropathing.ivy:pedro:${ivy_version}"
 
     implementation "com.bylazar:fullpanels:${panels_version}"
 
-    // although we don't used nextftc, their bindings stuff is quite useful by itself
     implementation "dev.nextftc:bindings:${bindings_version}"
     implementation "dev.nextftc.v2:control:${nftc_version}"
     implementation "dev.nextftc.v2:hardware:${nftc_version}"
     implementation "dev.nextftc.v2:units:${nftc_version}"
 
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.2'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.2'
+    //noinspection NewerVersionAvailable
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jackson_version}"
+    //noinspection NewerVersionAvailable
+    implementation "com.fasterxml.jackson.core:jackson-core:${jackson_version}"
+    //noinspection NewerVersionAvailable
+    implementation "com.fasterxml.jackson.core:jackson-annotations:${jackson_version}"
 }
 

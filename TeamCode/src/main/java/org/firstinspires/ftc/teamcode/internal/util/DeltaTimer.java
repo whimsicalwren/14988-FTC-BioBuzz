@@ -6,11 +6,9 @@ package org.firstinspires.ftc.teamcode.internal.util;
  */
 public class DeltaTimer {
 
-    public long last;
+    private long last;
 
-    public DeltaTimer() {
-        last = System.nanoTime();
-    }
+    public DeltaTimer() { reset(); }
 
     public void reset() {
         last = System.nanoTime();

@@ -7,6 +7,8 @@ import dev.nextftc.hardware.actuators.NextMotor;
 
 import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
 
+import static dev.nextftc.hardware.actuators.NextMotor.Direction;
+
 /**
  * the one the only robot config.
  * goddamn this file changes every year
@@ -15,13 +17,17 @@ import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
  */
 @Configurable
 public class RobotConfig implements RRSubsystem { // yes very subsystem
+    public static Direction flDirection = Direction.FORWARD;
+    public static Direction frDirection = Direction.REVERSE;
+    public static Direction blDirection = Direction.FORWARD;
+    public static Direction brDirection = Direction.REVERSE;
 
-    public static RobotConfig INSTANCE;
 
-    public static RobotConfig getOrNew() {
-        if (INSTANCE == null) INSTANCE = new RobotConfig();
-        return INSTANCE;
-    }
+    public static double driveY = 1;
+    public static double driveX = 1;
+    public static double driveYaw = 1;
+    public static double slowmode = 0.4;
+
 
     public static int
             flPort = 0,
@@ -40,7 +46,18 @@ public class RobotConfig implements RRSubsystem { // yes very subsystem
     }
 
     @Override
+    public void postInit() {
+        flDrive.setDirection(flDirection);
+        frDrive.setDirection(frDirection);
+        blDrive.setDirection(blDirection);
+        brDrive.setDirection(brDirection);
+    }
+
+    @Override
     public void postStop() {
         INSTANCE = null;
     }
+
+    public static RobotConfig INSTANCE;
+    public RobotConfig() { INSTANCE = this; }
 }

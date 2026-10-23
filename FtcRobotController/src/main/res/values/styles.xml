@@ -27,7 +27,6 @@
         <item name="android:buttonStyle">@style/whimsyButton</item>
         <item name="textWhite">#C0C0C0</item>
         <item name="colorReady">@color/light_teal</item>
-        <item name="colorInitReady">@color/dark_purple</item>
 
         <item name="textBright">@color/bright_blue</item>
         <item name="textLight">@color/light_teal</item>

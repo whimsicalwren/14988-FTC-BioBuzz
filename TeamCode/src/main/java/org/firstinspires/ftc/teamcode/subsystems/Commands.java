@@ -6,10 +6,8 @@ import org.firstinspires.ftc.teamcode.internal.Manager;
 import org.firstinspires.ftc.teamcode.internal.subsystems.RobotConfig;
 import org.firstinspires.ftc.teamcode.internal.subsystems.Sensitivities;
 
-import dev.nextftc.bindings.Button;
-
 public enum Commands implements Runnable {
-    SLOWMODE_ON(Command.build().setExecute(() -> Sensitivities.slowmodeValue = Sensitivities.slowmode)),
+    SLOWMODE_ON(Command.build().setExecute(() -> Sensitivities.slowmodeValue = RobotConfig.slowmode)),
     SLOWMODE_OFF(Command.build().setExecute(() -> Sensitivities.slowmodeValue = 1.0)),
     DRIVE(Command.build()
             .setExecute(() -> {
@@ -35,9 +33,5 @@ public enum Commands implements Runnable {
     @Override
     public void run() {
         command.schedule();
-    }
-
-    public void bind(Button button) {
-        button.whenBecomesTrue(this);
     }
 }

@@ -59,7 +59,7 @@ public interface RRSubsystem {
     default void onStartButtonPressed() {}
 
     /**
-     * Runs before {@link RROpMode#_startButtonPressed()}, if code needs to be run there.
+     * Runs after {@link RROpMode#_startButtonPressed()}, if code needs to be run there.
      */
     default void postStartButtonPressed() {}
     // endregion
@@ -98,11 +98,6 @@ public interface RRSubsystem {
      */
     default void postStop() {}
     // endregion
-
-    /**
-     * This method is called after all three update methods, to preserve deltatime accuracy
-     */
-    default void addTelemetry(TelemetryHelper telemetry) {}
 
     default Voltage voltage() {
         return RobotController.getInputVoltage();
