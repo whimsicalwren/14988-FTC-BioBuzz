@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.subsystems;
 
+import org.firstinspires.ftc.teamcode.internal.RRobotKt;
 import org.firstinspires.ftc.teamcode.internal.RRSubsystem;
 
 public class BasicMecanumDrive implements RRSubsystem {
@@ -9,8 +10,8 @@ public class BasicMecanumDrive implements RRSubsystem {
 
     @Override
     public void onInit() {
-        gamepad1().leftTrigger.greaterThan(0.3).whenBecomesTrue(Commands.SLOWMODE_ON);
-        gamepad1().leftTrigger.greaterThan(0.3).whenBecomesFalse(Commands.SLOWMODE_OFF);
+        RRobotKt.gamepad1().leftTrigger.greaterThan(0.3).whenBecomesTrue(Commands.SLOWMODE_ON);
+        RRobotKt.gamepad1().leftTrigger.greaterThan(0.3).whenBecomesFalse(Commands.SLOWMODE_OFF);
     }
 
     @Override

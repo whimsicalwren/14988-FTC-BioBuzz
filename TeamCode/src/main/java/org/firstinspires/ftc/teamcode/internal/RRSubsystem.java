@@ -2,9 +2,6 @@ package org.firstinspires.ftc.teamcode.internal;
 
 import com.pedropathing.ivy.Scheduler;
 
-import org.firstinspires.ftc.teamcode.internal.util.DeltaTimer;
-import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
-
 import dev.nextftc.hardware.RobotController;
 import dev.nextftc.units.measuretypes.Voltage;
 
@@ -102,25 +99,5 @@ public interface RRSubsystem {
 
     default Voltage voltage() {
         return RobotController.getInputVoltage();
-    }
-
-    default RRGamepad gamepad1() {
-        return RRobot.gamepad1;
-    }
-
-    default RRGamepad gamepad2() {
-        return RRobot.gamepad2;
-    }
-
-    default TelemetryHelper telemetry() {
-        return RRobot.telemetry;
-    }
-
-    default DeltaTimer deltaTimer() {
-        return RRobot.deltaTimer;
-    }
-
-    default Long getDelta() {
-        return RRobot.deltaTimer.get();
     }
 }

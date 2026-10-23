@@ -1,15 +1,7 @@
 package org.firstinspires.ftc.teamcode.internal;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpModeManagerNotifier;
-
 import org.firstinspires.ftc.teamcode.internal.util.Config;
-import org.firstinspires.ftc.teamcode.internal.util.DeltaTimer;
-import org.firstinspires.ftc.teamcode.internal.util.TelemetryHelper;
 
-import java.util.function.Function;
-
-import dev.nextftc.hardware.RobotController;
 import dev.nextftc.hardware.actuators.NextMotor;
 
 /**
@@ -17,16 +9,16 @@ import dev.nextftc.hardware.actuators.NextMotor;
  * goddamn this file changes every year
  * that's right. it's a subsystem now.
  */
-public class RRobot implements RRSubsystem, OpModeManagerNotifier.Notifications { // yes very subsystem
+public class RRobot implements RRSubsystem { // yes very subsystem
 
     public NextMotor flDrive, frDrive, blDrive, brDrive;
 
     @Override
     public void preInit() {
-        flDrive = new NextMotor(RobotController.controlHub(), Config.flPort);
-        frDrive = new NextMotor(RobotController.expansionHub(), Config.frPort);
-        blDrive = new NextMotor(RobotController.controlHub(), Config.blPort);
-        brDrive = new NextMotor(RobotController.expansionHub(), Config.brPort);
+        flDrive = new NextMotor(Config.flHub.get(), Config.flPort);
+        frDrive = new NextMotor(Config.frHub.get(), Config.frPort);
+        blDrive = new NextMotor(Config.blHub.get(), Config.blPort);
+        brDrive = new NextMotor(Config.brHub.get(), Config.brPort);
     }
 
     @Override
@@ -44,28 +36,4 @@ public class RRobot implements RRSubsystem, OpModeManagerNotifier.Notifications 
 
     public static RRobot INSTANCE;
     RRobot() { INSTANCE = this; }
-
-    public static RROpMode runningOpMode = null;
-    public static TelemetryHelper telemetry = opMode(rrOpMode -> rrOpMode.helper);
-    public static RRGamepad gamepad1 = opMode(rrOpMode -> rrOpMode.p1);
-    public static RRGamepad gamepad2 = opMode(rrOpMode -> rrOpMode.p2);
-    public static DeltaTimer deltaTimer = opMode(rrOpMode -> rrOpMode.deltaTimer);
-
-    private static <T> T opMode(Function<RROpMode, T> opModeFunc) {
-        if (runningOpMode == null) {
-            throw new IllegalStateException("No RROpMode set!");
-        }
-
-        return opModeFunc.apply(runningOpMode);
-    }
-
-    @Override
-    public void onOpModePreInit(OpMode opMode) {
-        try {
-            runningOpMode = (RROpMode) opMode;
-        } catch (ClassCastException ignored) {}
-    }
-
-    @Override public void onOpModePreStart(OpMode opMode) {}
-    @Override public void onOpModePostStop(OpMode opMode) {}
 }

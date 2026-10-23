@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.subsystems;
 
 import com.pedropathing.ivy.Command;
 
+import org.firstinspires.ftc.teamcode.internal.RRobotKt;
 import org.firstinspires.ftc.teamcode.internal.RRobot;
 import org.firstinspires.ftc.teamcode.internal.util.Config;
 
@@ -10,9 +11,9 @@ public enum Commands implements Runnable {
     SLOWMODE_OFF(Command.build().setExecute(() -> Config.setSlowmodeModifier(1.0))),
     DRIVE(Command.build()
             .setExecute(() -> {
-                double y = RRobot.gamepad1.leftStickY.get() * Config.driveYModifier.get();
-                double x = RRobot.gamepad1.leftStickX.get() * Config.driveXModifier.get();
-                double r = RRobot.gamepad1.rightStickX.get() * Config.driveRModifier.get();
+                double y = RRobotKt.gamepad1().leftStickY.get() * Config.driveYModifier.get();
+                double x = RRobotKt.gamepad1().leftStickX.get() * Config.driveXModifier.get();
+                double r = RRobotKt.gamepad1().rightStickX.get() * Config.driveRModifier.get();
 
                 double denominator = Math.max(Math.abs(x) + Math.abs(y) + Math.abs(r), 1.0);
 

@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.internal.RROpMode;
 import org.firstinspires.ftc.teamcode.internal.util.OpModeGroup;
 import org.firstinspires.ftc.teamcode.subsystems.BasicMecanumDrive;
 
-@TeleOp(group = OpModeGroup.normal, name = "Basic Mecanum Drive")
+@TeleOp(group = OpModeGroup.normal, name = "basic bitch opmode")
 public class BasicMecanumOpMode extends RROpMode {
 
     public BasicMecanumOpMode() {
